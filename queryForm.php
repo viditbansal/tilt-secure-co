@@ -1,7 +1,7 @@
 <?php 
 ini_set('max_execution_time', 3600);
 ini_set('memory_limit', '1024M');
-if($_SERVER['SERVER_ADDR']=='::1')
+if($_SERVER['SERVER_ADDR']=='172.21.4.104')
 {
 	$con 	= mysqli_connect("localhost","root","") or die('Error in connecting MySQL');
 	$db_con = mysqli_select_db($con,"intermingl");
