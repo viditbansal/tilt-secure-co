@@ -1,0 +1,18 @@
+RewriteEngine On
+
+#RewriteCond %{SERVER_NAME} elasticbeanstalk
+#RewriteRule ^ https://api.tilt.co%{REQUEST_URI} [L,R]
+
+#RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
+
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} !-f
+RewriteRule ^(.*)$ index.php?page=$1&%{QUERY_STRING}&param=%{REQUEST_URI} 
+
+php_value upload_max_filesize 150M
+php_value post_max_size 150M
+php_value memory_limit 128M
+
+ExpiresActive On
+ExpiresByType image/x-icon "access plus 1 year"
+ExpiresDefault "access plus 2 months"
